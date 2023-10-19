@@ -1,0 +1,93 @@
+﻿@page "/login"
+@inject NavigationManager navManager
+
+<main>
+    <div class="container login">
+       <div class="row">
+        <div class="col-md-5">
+        <form class="p-4">
+            <h3>Login</h3>
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input id="loginEmail" class="form-control" type="email" placeholder="Enter your email" />
+            </div>
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input id="loginPassword" class="form-control" type="password" placeholder="Enter your password" />
+            </div>
+                    <div class="text-center">
+             <button class="btn  btn-lg  custom-btn  mt-2 " type="button">Sign In</button>
+            </div>
+            
+            <div class="mt-2 text-center ">
+             <p>New user? <a href="/registration" style="text-decoration:none;color:#F56021">Register Here</a></p>
+            </div>
+        </form>
+        </div>
+        </div>
+    </div>
+</main>
+
+
+<style>
+ .login{
+        background-image: url('https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=600');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: left center;
+        margin-top:3em;
+        height:30em;
+       
+    }
+    main{
+        background-color:white;
+    }
+    .custom-btn{
+        background-color: #1FC1C3;
+        color:white;
+        padding:0.5em;
+        width:50%;
+        
+        
+    }
+    h3{
+        font-weight:600;
+        
+
+    
+        font-size: 36px;
+        line-height: 44px;
+        font-style: normal;
+    }
+    input{
+        height:3em;
+    }
+    p{
+       font-weight: 600;
+        line-height: 24px;
+    }
+    
+</style>
+@code{
+    //for doctor's first time registration
+    public class User
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public bool IsFirstLogin { get; set; } = true;
+    }
+    public async Task Login(User user)
+    {
+        // Validate the doctor's credentials...
+
+        if (user.IsFirstLogin)
+        {
+            navManager.NavigateTo("/change-password");
+        }
+        else
+        {
+            navManager.NavigateTo("/doctor/dashboard");
+        }
+    }
+
+}

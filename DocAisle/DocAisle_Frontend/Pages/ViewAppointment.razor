@@ -1,0 +1,135 @@
+﻿@page "/appointment/appointmentId"
+
+<div class="container">
+    <h1>Appointment Details</h1>
+
+    <!-- Display patient appointment details -->
+    <h3>Patient Information</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <label>Patient Name:</label>
+            <p>@patientName</p>
+        </div>
+        <div class="col-md-4">
+            <label>Appointment Date:</label>
+            <p>@appointmentDate</p>
+        </div>
+    </div>
+
+    <h3>Symptoms</h3>
+    <p>@symptoms</p>
+
+    <!-- Medical History Form -->
+    <h3>Medical History</h3>
+    <form>
+        <div class="form-group">
+            <label for="medicalHistory">Medical History</label>
+            <textarea class="form-control" id="medicalHistory" rows="5" @bind="@medicalHistory"></textarea>
+        </div>
+        <button class="btn btn custom-save-btn mt-2" @onclick="SaveMedicalHistory">Update</button>
+    </form>
+
+    <!-- Suggestions based on symptoms by LLM -->
+    <h3>Suggestions</h3>
+    <ul>
+        @foreach (var suggestion in suggestions)
+        {
+            <li>@suggestion</li>
+        }
+    </ul>
+
+    <!-- Add Prescription Modal -->
+    <div class="modal" style="display: @modalDisplayStyle;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Add Prescription</h5>
+                    <button type="button" class="close" @onclick="CloseModal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form @onsubmit="SavePrescription">
+
+                        <div class="form-group">
+                            <label for="appointmentId">Prescription</label>
+                            <textarea class="form-control" id="prescription" @bind="prescription" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="consultationCost">Consultation Fee</label>
+                            <input type="number" id="consultationCost" class="form-control" @bind="consultationCost" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medicationCost">Treatment Cost</label>
+                            <input type="number" id="medicationCost" class="form-control" @bind="medicationCost" required />
+                        </div>
+
+                       
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn custom-save-btn" @onclick="SavePrescription">Save</button>
+                    <button type="button" class="btn btn " @onclick="CloseModal" style="background-color:#F56021">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn custom-save-btn" @onclick="OpenModal">Add Prescription</button>
+</div>
+<style>
+    .custom-save-btn{
+        background-color: #1FC1C3;
+    }
+</style>
+    
+
+
+@code {
+    [Parameter]
+    public int appointmentId { get; set; }
+
+    
+    private string patientName = "John Doe";
+    private string appointmentDate = "October 20, 2023";
+    private string symptoms = "Fever, Cough, Headache";
+    private string medicalHistory = "No significant medical history.";
+   
+    private string modalDisplayStyle = "none";
+    private string prescription = "";
+    private decimal consultationCost;
+    private decimal medicationCost;
+    private decimal totalCost;
+
+    private List<string> suggestions = new List<string>
+    {   "You might be having a toochache",
+        "Rest and drink plenty of fluids.",
+        "Consider over-the-counter medicine."
+       
+    };
+
+    private void SaveMedicalHistory()
+    {
+        totalCost = consultationCost + medicationCost;
+    }
+    private void OpenModal()
+    {
+            modalDisplayStyle = "block";
+     }
+
+    private void CloseModal()
+    {
+            modalDisplayStyle = "none";
+            prescription = "";
+     }
+   
+    
+    private void SavePrescription()
+    {
+            
+            CloseModal();
+    }
+
+ }

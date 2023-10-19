@@ -1,0 +1,49 @@
+﻿
+<div class="navbar col-12">
+    <div class="menu-bar col-4 ">
+        <a class="m-3" href="/"> Home</a>
+        <a class="m-3" href="/about-us"> About Us</a>
+        <a class="m-3"> Contact Us</a>
+    </div>
+    <div class="user-login">
+        <a class="Register-button m-3" href="/registration">Register</a>
+        <a class="logout-button " href="/login">Login</a>
+    </div>
+    <div class="hamburger-menu" @onclick="ToggleMenu">
+        <div class="hamburger-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+         <!-- Dropdown menu content -->
+        
+        @if (isMenuVisible)
+        {
+            <div class="dropdown-menu ">
+                <a href="/">Home</a>
+                <a href="/about-us">About Us</a>
+                <a>Contact Us</a>
+                <a href="/registration">Register</a>
+                <a href="#">Login</a>
+            </div>
+        }
+        
+        
+    </div>
+
+   
+</div>
+@code {
+    private bool isMenuVisible = false;
+   
+    
+
+    private void ToggleMenu()
+    {
+        isMenuVisible = !isMenuVisible;
+        
+       
+        
+
+    }
+}

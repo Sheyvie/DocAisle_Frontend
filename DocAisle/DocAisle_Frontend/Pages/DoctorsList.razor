@@ -1,0 +1,81 @@
+﻿@page "/doctor"
+<div class="row">
+<div class="col-md-5">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-5">
+                    <img src="https://svgsilh.com/svg/1639328.svg" alt="Imag" class="img-fluid" />
+                </div>
+                <div class="col-7 ">
+                    <div class="text-right">
+                        <h5 class="card-title">Dr. Who</h5>
+                        <p class="card-subtitle text-black">AAR</p>
+                        <p class="card-text text-black">Specialty: Cardiology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            
+            <button class="btn btn-dark" @onclick="DeleteDoctor">Remove Doctor</button>
+            
+        </div>
+    </div>
+</div>
+<div class="col-md-5">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-5">
+                    <img src="https://svgsilh.com/svg/1639328.svg" alt="Imag" class="img-fluid" />
+                </div>
+                <div class="col-7 ">
+                    <div class="text-right">
+                        <h5 class="card-title">Dr. Right</h5>
+                        <p class="card-subtitle text-black">AAR</p>
+                        <p class="card-text text-black">Specialty: Dentistry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body d-flex flex-row justify-content-between">
+
+            <button class="btn btn " @onclick="DeleteDoctor" style="background-color:#1FC1C3">Approve Doctor</button>
+            <button class="btn btn-dark" @onclick="DeleteDoctor">Reject Doctor</button>
+            
+
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .card{
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+</style>
+
+
+
+
+
+@code {
+
+    private DoctorInfo doctorInfo = new DoctorInfo();
+    private DoctorInfo doctors;
+
+    private class DoctorInfo
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Title { get; set; }
+        public string Hospital { get; set; }
+        public string Specialty { get; set; }
+    }
+    private void DeleteDoctor()
+    {
+        // Implement the logic for deleting the doctor
+    }
+}

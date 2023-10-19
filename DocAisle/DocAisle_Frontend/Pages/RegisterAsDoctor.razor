@@ -1,0 +1,93 @@
+﻿@page "/doctor/register-doctor"
+
+<h2 class="text-center mt-4">Register as Doctor</h2>
+<div class="container d-flex justify-content-center align-items-center mt-4" style="height:auto" >
+    <div class="doctor-registration-form">
+        <form class="form" @onsubmit="RegisterDoctor">
+            <div class="row mb-3">
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" class="form-control" @bind="doctorInfo.FirstName" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" class="form-control" @bind="doctorInfo.LastName" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" class="form-control" @bind="doctorInfo.Title" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="hospital">Hospital</label>
+                        <input type="text" id="hospital" class="form-control" @bind="doctorInfo.Hospital" />
+                    </div>
+                </div>
+            </div>
+        <div class="form-group mb-3">
+            <label for="specialty">Specialty:</label>
+            <select id="specialty" class="form-control" @bind="doctorInfo.Specialty">
+                <option value="Ophthalmology">Ophthalmology</option>
+                <option value="Dentistry">Dentistry</option>
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="license">Practice License:</label>
+            <InputFile id="license" class="form-control-file" OnChange="HandleLicenseUpload" />
+        </div>
+        <div class="text-center mt-4">
+                <a href="/login" type="submit" class="btn btn custom-btn">Register</a>
+        </div>
+        
+    </form>
+</div>
+</div>
+<style>
+    .custom-btn {
+        background-color: #F56021;
+        color: white;
+        position:center;
+        
+    }
+</style>
+
+@code {
+    private DoctorInfo doctorInfo = new DoctorInfo();
+    private IBrowserFile licenseFile;
+
+    private class DoctorInfo
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Title { get; set; }
+        public string Hospital { get; set; }
+        public string Specialty { get; set; }
+    }
+
+    private async Task HandleLicenseUpload(InputFileChangeEventArgs e)
+    {
+        var file = e.GetMultipleFiles().FirstOrDefault();
+        if (file != null)
+        {
+            licenseFile = file;
+        }
+    }
+
+    private async Task RegisterDoctor()
+    {
+      
+        var fileName = licenseFile != null ? licenseFile.Name : "No file selected";
+        var successMessage = $"Doctor {doctorInfo.FirstName} {doctorInfo.LastName} registered successfully. License file: {fileName}";
+       
+    }
+}

@@ -1,0 +1,144 @@
+﻿@page "/patient/dashboard"
+
+
+<!--Main patient page-->
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 sidebar">
+            <!-- Sidebar content, including navigation links -->
+         
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-3">
+                                <a class="nav-link" @onclick="@(() => OnLinkClicked("user-profile"))">Profile</a>
+                            </li>
+
+                            <li class="nav-item mb-4">
+                               <a class="nav-link" @onclick="@(() => OnLinkClicked("book-appointment"))">Book Appointment</a>
+                             </li>
+                            
+                            <li class="nav-item mb-4 ">
+                                <a class="nav-link" @onclick="@(() => OnLinkClicked("medical-history"))">Medical History</a>
+                            </li>
+                            <li class="nav-item mb-4 ">
+                                <a class="nav-link" @onclick="@(() => OnLinkClicked("make-payment"))">Make Payment</a>
+                            </li>
+                           
+                        </ul>
+                   
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-8 text-center ">
+
+            <div class="main-content">
+              
+
+                    @if (currentComponent == typeof(BookAppointment))
+                    {
+
+                        
+                                <BookAppointment />
+                           
+
+                        
+                    }
+                    else if (currentComponent == typeof(UserProfile))
+                    {
+
+                       
+                            <UserProfile />
+                        
+                    
+                      
+                    }
+                    else if (currentComponent == typeof(MedicalHistory))
+                    {
+
+                      
+                            <MedicalHistory />
+                      
+
+
+                    }
+                    else if (currentComponent == typeof(Payment))
+                    {
+                       
+                            <Payment />
+                        
+                       
+                    }
+                    
+               
+                
+               
+              
+
+        </div>
+    </div>
+    </div>
+</div>
+<style>
+    /* Sidebar Styles */
+    .sidebar {
+        background-color: #0A253B;
+
+        padding: 20px; 
+    }
+
+    .nav-link {
+        color: white; 
+        border-bottom: 1px solid white;
+        padding: 10px 0;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+        
+        padding: 5px; 
+        height:auto;
+     
+        
+    }
+
+    /* Centering the "Page not found" message */
+    .main-content p {
+        text-align: center;
+        color: white; 
+        
+    }
+
+      
+
+</style>
+@code {
+
+
+    private Type currentComponent = typeof(UserProfile);
+
+    private void OnLinkClicked(string link)
+    {
+        switch (link)
+        {
+            //change later to userProfile
+            case "user-profile":
+                currentComponent = typeof(UserProfile);
+                break;
+            case "book-appointment":
+                currentComponent = typeof(BookAppointment);
+                break;
+            case "medical-history":
+                currentComponent = typeof(MedicalHistory);
+                break;
+            case "make-payment":
+                currentComponent = typeof(Payment);
+                break;
+
+                    // Adding other cases as needed...
+        }
+    }
+ }
+
+

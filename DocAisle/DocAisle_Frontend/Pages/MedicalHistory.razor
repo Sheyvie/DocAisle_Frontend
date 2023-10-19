@@ -1,0 +1,103 @@
+﻿@page "/patient/dashboard/medical-history"
+
+<h3>Health Record Form</h3>
+
+
+
+<div class="form-container p-4">
+    <div class="row">
+    <form class="form" @onsubmit="SubmitForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="form-control" @bind="patientInfo.Name" />
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" class="form-control" @bind="patientInfo.Age" />
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" class="form-control" @bind="patientInfo.Gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" class="form-control" @bind="patientInfo.Address" />
+        </div>
+
+        <div class="form-group">
+            <label for="medicalConditions">Medical Conditions:</label>
+            <textarea id="medicalConditions" class="form-control" rows="4" @bind="patientInfo.MedicalConditions"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="previousPrescriptions">Previous Prescriptions:</label>
+            <textarea id="previousPrescriptions" class="form-control" rows="4" @bind="patientInfo.PreviousPrescriptions"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="doctorInfo">Doctor Information:</label>
+            <input type="text" id="doctorInfo" class="form-control" @bind="patientInfo.DoctorInfo" />
+        </div>
+
+        <!-- Additional Fields -->
+        <div class="form-group">
+            <label for="bloodType">Blood Type:</label>
+            <input type="text" id="bloodType" class="form-control" @bind="patientInfo.BloodType" />
+        </div>
+
+        <div class="form-group">
+            <label for="allergies">Allergies:</label>
+            <textarea id="allergies" class="form-control" rows="4" @bind="patientInfo.Allergies"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="emergencyContact">Emergency Contact:</label>
+            <input type="text" id="emergencyContact" class="form-control" @bind="patientInfo.EmergencyContact" />
+        </div>
+
+        <!-- Add more fields as needed -->
+
+        <button type="submit" class="btn btn-dark">Submit</button>
+
+    </form>
+    </div>
+</div>
+<style>
+    .custom-btn {
+        background-color: #F56021;
+        color: white;
+        
+    }
+</style>
+@code {
+    private PatientInfo patientInfo = new PatientInfo();
+    private string successMessage;
+
+    private class PatientInfo
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string MedicalConditions { get; set; }
+        public string PreviousPrescriptions { get; set; }
+        public string DoctorInfo { get; set; }
+        // Additional fields
+        public string BloodType { get; set; }
+        public string Allergies { get; set; }
+        public string EmergencyContact { get; set; }
+        
+    }
+
+    private void SubmitForm()
+    {
+        successMessage = "Health record updated successfully!";
+    }
+}

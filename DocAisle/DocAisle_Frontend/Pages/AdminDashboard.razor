@@ -1,0 +1,112 @@
+﻿@page "/admin/dashboard"
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 sidebar">
+            <nav class="nav flex-column">
+                <ul class="nav flex-column">
+                    
+                    
+                    <li class="nav-item">
+                        <a class="nav-link mb-4" @onclick="@(() => OnLinkClicked("doctors-list"))">Doctors List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mb-4" @onclick="@(() => OnLinkClicked("view-hospitals"))">View Hospitals</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link mb-4" @onclick="@(() => OnLinkClicked("add-hospital"))">Add New Hospital</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mb-4" @onclick="@(() => OnLinkClicked("feedback-card"))">Feedbacks</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-8">
+            <div class="main-content">
+                <h2 class="text-center mb-3">DocAisle Admin</h2>
+                
+                @if (currentComponent == typeof(AddHospital))
+                {
+                    <AddHospital />
+                }
+                else if(currentComponent == typeof(HospitalsList))
+                {
+                    <HospitalsList/>
+                }
+                else if(currentComponent == typeof(DoctorsList))
+                {
+                    <DoctorsList/>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+>
+<style>
+    /* Sidebar Styles */
+    .sidebar {
+        background-color: #0A253B;
+        padding: 20px;
+    }
+
+    .nav-link {
+        color: white;
+        border-bottom: 1px solid white;
+        padding: 10px 0;
+    }
+    /* Main Content Styles */
+    .main-content {
+        
+        padding: 20px;
+        height: auto;
+       
+    }
+    
+
+   /* Centering the "Page not found" message */
+    .main-content p {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+    }
+
+</style>
+@code {
+
+
+    private Type currentComponent = typeof(DoctorsList);
+
+    private void OnLinkClicked(string link)
+    {
+        switch (link)
+        {
+            //change later to userProfile
+            case "add-hospital":
+                currentComponent = typeof(AddHospital);
+                break;
+            case "book-appointment":
+                currentComponent = typeof(BookAppointment);
+                break;
+            case "medical-history":
+                currentComponent = typeof(MedicalHistory);
+                break;
+            case "view-hospitals":
+                currentComponent = typeof(HospitalsList);
+                break;
+
+            case "doctors-list":
+                currentComponent = typeof(DoctorsList);
+                break;
+                // Adding other cases as needed...
+        }
+    }
+
+
+}

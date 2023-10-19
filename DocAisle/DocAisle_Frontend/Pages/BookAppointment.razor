@@ -1,0 +1,113 @@
+﻿@page "/patient/dashboard/appointment"
+<section class="main">
+
+    <div class="container appoint">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-8 col-sm-11 ">
+
+                <form class="apt p-3">
+                    <h3 class=" p-2  mb-2 fw-bold text-center">Book Appointment</h3>
+                    <div class="doc mb-3">
+                        <select class="p-2"style="width:100%">
+                            <option> Select a Doctor</option>
+                            <option> Doctor Who</option>
+                            <option>Doctor Right</option>
+                        </select>
+                        
+                    </div>
+                    <div class="hosp mb-3">
+                        <select class="p-2" style="width:100%">
+                            <option> Select a Hospital</option>
+                            <option> Nyeri Provisional Hospital</option>
+                            <option> Aga Khan Hospital</option>
+                            <option> AAR</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group mb-2">
+                        <SfDateTimePicker TValue="DateTime?" Value="@DateValue" Min="@MinDate" Max="@MaxDate"></SfDateTimePicker>
+                        <SfSchedule TValue="AppointmentData" Height="650px">
+                          <ScheduleTimeScale Interval="60" SlotCount="1"></ScheduleTimeScale>
+                           <ScheduleViews>
+                               <ScheduleView Option="View.Day"></ScheduleView>
+                                <ScheduleView Option="View.Week"></ScheduleView>
+                                  <ScheduleView Option="View.WorkWeek"></ScheduleView>
+                            </ScheduleViews>
+                        </SfSchedule>
+
+                    </div>
+                        
+                    <div class="name d-md-flex flex-wrap justify-content-between ">
+                        <div >
+                            <label for="name" class="form-label">First Name</label>
+                            <input id="name" class="form-control" type="text" placeholder="First Name" style="width:350px"/>
+                        </div>
+                        <div>
+                            <label for="name" class="form-label">Last Name</label>
+                            <input id="name" class="form-control" type="text" placeholder="Last Name" style="width:350px"/>
+                        </div>
+                    </div>
+                   <div class="contact d-md-flex flex-wrap justify-content-between">
+                        <div>
+                            <label for="email" class="form-label">Email</label>
+                            <input id="email" class="form-control" type="email" placeholder="Email" style="width:350px" />
+                        </div>
+                        <div >
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input id="phoneNumber" class="form-control" type="text" placeholder="Phone number" style="width:350px"  />
+                        </div>
+
+                   </div>
+                   
+                    <div class=" symptoms mb-3 ml-2 ">
+                        <label for="symptoms" class="form-label">Symptoms</label>
+                        <textarea id="symptoms" class="form-control "style="height:6em" type="text" placeholder="Enter your Symptoms"> </textarea>
+                    </div>
+                   <div class="text-center">
+                        <a href="/patient/dashboard" class="btn btn-lg custom-btn" type="button">Submit</a>
+                   </div>
+                       
+                        
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+  
+</section>
+  
+<style>
+    .custom-btn {
+        background-color: #F56021;
+        color: white;
+        width:50%;
+    }
+    .appoint{
+        background-color: white;
+        <!--box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);-->
+        margin-top: 1em;
+        padding:1em 0;
+        
+      
+    }
+    .main{
+        background-color:white;
+        padding:1em 0;
+       
+    }
+    input{
+        height:3em;
+        
+    }
+    label{
+        font-weight: 600;
+    }
+</style>
+@code{
+    public DateTime? DateValue {get;set;} = new DateTime(DateTime.Now.Year, DateTime.Now.Month,10);
+    public DateTime MinDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 05);
+    public DateTime MaxDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 27);
+
+   
+}

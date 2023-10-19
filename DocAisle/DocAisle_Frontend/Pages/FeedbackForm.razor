@@ -1,0 +1,52 @@
+﻿@page "/feedback"
+
+
+
+<div class="container feedback-container mt-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6 col-md-4 col-sm-12 m-5 feedback">
+
+       <div class="">
+        <h3> Kindly give us a feedback of your experince</h3>
+
+        <div class="mb-4">
+            <h6>Ratings</h6>
+            <div class="rating" style="background-color:white">
+                <span class="fa fa-star-o" data-rating="1"></span>
+                <span class="fa fa-star-o" data-rating="2"></span>
+                <span class="fa fa-star-o" data-rating="3"></span>
+                <span class="fa fa-star-o" data-rating="4"></span>
+                <span class="fa fa-star-o" data-rating="5"></span>
+                <input type="hidden" name="rating" class="rating-value" value="3.7" />
+            </div>
+            
+        </div>
+        <div class="comments" >
+            <h6>Comments</h6>
+            <textarea> comments</textarea>
+        </div>
+       </div>
+    </div>
+  </div>
+    
+</div>
+<style>
+
+    .feedback-container {
+        background-color: #F56021;
+        height: 50vh;
+    }
+
+    .feedback {
+        padding: 20px;
+        text-align: center;
+    }
+
+   
+    .rating__star {
+        cursor: pointer;
+        color: #dabd18b2;
+    }
+
+   
+</style>

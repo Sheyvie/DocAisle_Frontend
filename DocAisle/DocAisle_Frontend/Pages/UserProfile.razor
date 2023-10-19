@@ -1,0 +1,79 @@
+﻿@page "/patient/dashboard/userprofile"
+
+<div class=" patient-profile">
+    <div class="row">
+
+        <div class="col-md-6">
+    <!-- Patient Picture -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOLSxup9_VwiUNcb8lk_nxeLRGZX7dv-V29-CQrLgL&s" alt="Patient Picture" class="card-img-top img-fluid img-thumbnail" style="max-width: 150px;" />
+
+    
+        <!-- Patient Name -->
+        <h2 class="title">Jane Doe</h2>
+
+        <!-- Address, Phone Number, and Email -->
+        <p class="card-text" style="color: black">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span> Nyeri, Kenya<br />
+            <span class="icon"><i class="fas fa-phone"></i></span> 073425263264<br />
+            <span class="icon"><i class="fas fa-envelope"></i></span> jane.doe@example.com
+        </p>
+
+        <!-- Upcoming Appointments -->
+        <h6 class="card-subtitle mb-3 text-muted">Upcoming Appointments</h6>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Appointment Date:</strong> June 15, 2023
+            </li>
+            <!-- Add more upcoming appointments here -->
+        </ul>
+        </div>
+                <div class="col-md-6">
+        <!-- Appointment History -->
+        <h6 class="card-subtitle mt-3 mb-2 text-muted">Appointment History</h6>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Date:</strong> October 10, 2023
+                <br />
+                <strong>Doctor:</strong> Dr. Wambui
+            </li>
+            <!-- Add more appointment history entries here -->
+        </ul>
+
+        <!-- Health Record History -->
+        <h6 class="card-subtitle mt-3 mb-2 text-muted">Health Record History</h6>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Date:</strong> April 5, 2023
+                <br />
+                <strong>Diagnosis:</strong> Flu
+            </li>
+            <!-- Add more health record history entries here -->
+        </ul>
+
+        <!-- Payment History -->
+        <h6 class="card-subtitle mt-3 mb-2 text-muted">Payment History</h6>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Date:</strong> July 20, 2023
+                <br />
+                <strong>Amount:</strong> $50.00
+                <br />
+                <strong>Service:</strong> Consultation
+            </li>
+            <!-- Add more payment history entries here -->
+        </ul>
+        </div>
+    </div>
+   
+</div>
+<style>
+    .patient-profile{
+        background:none;
+        border: none;
+        padding: 10px;
+    }
+    h6{
+        font-weight:600;
+       
+    }
+</style>

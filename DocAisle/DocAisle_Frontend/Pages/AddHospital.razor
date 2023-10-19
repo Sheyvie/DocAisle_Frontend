@@ -1,0 +1,54 @@
+﻿@page "/addhospital"
+
+
+<div class="text-center"> 
+<h2>Add Hospital</h2>
+<form >
+    <div class="form-group mb-2">
+        <label for="hospitalName">Hospital Name</label>
+        <input type="text" id="hospitalName" class="form-control" @bind="hospitalName" required />
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="hospitalLocation">Hospital Location</label>
+        <input type="text" id="hospitalLocation" class="form-control" @bind="hospitalLocation" required />
+    </div>
+
+    <div class="form-group mb-2">
+        <label for="hospitalImageUrl">Hospital Image URL</label>
+        <input type="url" id="hospitalImageUrl" class="form-control" @bind="hospitalImageUrl" required />
+    </div>
+    <div>
+        <button type="submit" class="btn btn custom-btn">Add Hospital</button>
+    </div>
+   
+</form>
+</div>
+<style>
+    .custom-btn {
+        background-color: #1FC1C3;
+        padding: 0.5em;
+    }
+
+    .text-center {
+        /* Center the content horizontally and vertically */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+</style>
+@code {
+    private string hospitalName;
+    private string hospitalLocation;
+    private string hospitalImageUrl;
+
+    
+
+    //private void AddHospital()
+    //{
+    //    // Handle the submission of the "Add Hospital" form.
+    //    
+    //}
+}
